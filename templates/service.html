@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<br>
+<br>
+  <div class="container">
+    <div class="row" >
+      {% for membership_plan in plan %}
+        <div class="col-md-6" >
+          <div class="card mb-3"  style="background-color:gray;">
+            <div class="card-body">
+              <h5 class="card-title">{{ membership_plan.name }}</h5>
+              <p class="card-text">Price: ${{ membership_plan.price }}</p>
+              <p class="card-text">Duration: {{ membership_plan.duration_months }} months</p>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+          </div>
+          <div class="row">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+

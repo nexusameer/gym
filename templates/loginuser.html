@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container">
+  {% if messages %}
+    <div class="alert alert-info" role="alert">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Login</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+
+        <form class="form" action="{% url 'loginuser' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" class="form-control" placeholder="e.g. dennis_ivy" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" class="form-control" placeholder="********" />
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            Login
+          </button>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

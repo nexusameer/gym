@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="container" style=" background-color:gray; width: 40%; margin: 0 auto;">
+    <h2>Your Current Membership Plan</h2>
+    {% if subscription_active %}
+        <p>Plan Name: {{ user_profile.membership_plan.name }}</p>
+        <p>Start Date: {{ user_profile.membership_start_date|date:"Y-m-d" }}</p>
+        <p>Expiry Date: {{ user_profile.membership_expiry_date|date:"Y-m-d" }}</p>
+    {% else %}
+        <p>You don't have an active membership plan. <a href="{% url 'buyplan' %}">Buy a subscription</a></p>
+    {% endif %}
+</div>
+{% endblock %}
